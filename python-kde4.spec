@@ -12,6 +12,7 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/%srcname-%version.tar.bz2
 BuildRequires: kdepimlibs4-devel 
 BuildRequires: python-sip >= 1:4.12
 BuildRequires: python-qt4-devel >= 4.8.2
+BuildRequires: automoc4
 Group: Development/KDE and Qt
 Provides: PyKDE4 = %epoch:%version-%release
 Provides: pykde4 = %epoch:%version-%release
