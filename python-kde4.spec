@@ -56,7 +56,7 @@ BuildArch: noarch
 Python bindings for KDE 4 documentation.
 
 %files doc
-%_kde_datadir/doc/python-kde4
+%_datadir/doc/python-kde4
 
 #------------------------------------------------------------
 
