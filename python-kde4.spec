@@ -22,7 +22,6 @@ Requires: python-qt4 >= 4.8.2
 The Python bindings for KDE 4.
 
 %files
-%doc AUTHORS COPYING COPYING.LESSER NEWS README THANKS
 %py_platsitedir/PyQt4/
 %py_platsitedir/PyKDE4
 %_kde_bindir/pykdeuic4
