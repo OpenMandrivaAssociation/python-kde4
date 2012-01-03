@@ -28,6 +28,7 @@ The Python bindings for KDE 4.
 %_kde_bindir/pykdeuic4
 %_kde_libdir/kde4/kpythonpluginfactory.so
 %dir %_kde_appsdir/pykde4
+%exclude %_kde_datadir/doc/python-kde4
 
 #-----------------------------------------------------------------------------
 
@@ -56,7 +57,7 @@ BuildArch: noarch
 Python bindings for KDE 4 documentation.
 
 %files doc
-%_datadir/doc/python-kde4
+%_kde_datadir/doc/python-kde4
 
 #------------------------------------------------------------
 
@@ -71,6 +72,6 @@ Python bindings for KDE 4 documentation.
 %makeinstall_std -C build
 
 # Copy Python Doc
-%{__mkdir_p} %{buildroot}%_datadir/doc/python-kde4
-%{__cp} -a docs/html/*  %{buildroot}%_datadir/doc/python-kde4/
+%{__mkdir_p} %{buildroot}%_kde_datadir/doc/python-kde4
+%{__cp} -a docs/html/*  %{buildroot}%_kde_datadir/doc/python-kde4/
 
