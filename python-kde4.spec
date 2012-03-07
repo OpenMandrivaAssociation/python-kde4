@@ -2,7 +2,7 @@
 
 Name:python-kde4
 Summary: KDE bindings to non-C++ languages
-Version: 4.8.0
+Version: 4.8.1
 Release: 1
 Epoch: 1
 Group: Graphical desktop/KDE
