@@ -2,13 +2,13 @@
 
 Name:python-kde4
 Summary: KDE bindings to non-C++ languages
-Version: 4.8.1
+Version: 4.8.2
 Release: 1
 Epoch: 1
 Group: Graphical desktop/KDE
 License: GPLv2
 URL: http://www.kde.org
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/%srcname-%version.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/%srcname-%version.tar.xz
 BuildRequires: kdepimlibs4-devel 
 BuildRequires: python-sip >= 1:4.12
 BuildRequires: python-qt4-devel >= 4.8.2
