@@ -73,5 +73,5 @@ Python bindings for KDE 4 documentation.
 
 # Copy Python Doc
 %{__mkdir_p} %{buildroot}%_kde_datadir/doc/python-kde4
-%{__cp} -a docs/html/*  %{buildroot}%_kde_datadir/doc/python-kde4/
+cp -a docs/html  %{buildroot}%_kde_datadir/doc/python-kde4/
 
