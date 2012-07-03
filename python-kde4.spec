@@ -9,6 +9,7 @@ Group: Graphical desktop/KDE
 License: GPLv2
 URL: http://www.kde.org
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/%srcname-%version.tar.xz
+Patch0: pykde4-respect-sip-flags.patch
 BuildRequires: kdepimlibs4-devel 
 BuildRequires: python-sip >= 1:4.12
 BuildRequires: python-qt4-devel >= 4.8.2
@@ -63,6 +64,7 @@ Python bindings for KDE 4 documentation.
 
 %prep
 %setup -q -n %srcname-%version
+%patch0 -p1
 
 %build
 %cmake_kde4
