@@ -2,8 +2,8 @@
 
 Name:		python-kde4
 Summary:	KDE bindings to non-C++ languages
-Version: 4.9.0
-Release: 2
+Version: 4.9.2
+Release: 1
 Epoch:		1
 Group:		Development/KDE and Qt
 License:	GPLv2
