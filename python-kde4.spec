@@ -2,8 +2,8 @@
 
 Name:		python-kde4
 Summary:	KDE bindings to non-C++ languages
-Version: 4.9.3
-Release: 1
+Version:	4.9.4
+Release:	1
 Epoch:		1
 Group:		Development/KDE and Qt
 License:	GPLv2
@@ -13,6 +13,7 @@ Patch0:		pykde4-respect-sip-flags.patch
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	python-sip >= 1:4.13.1
 BuildRequires:	python-qt4-devel >= 4.9
+BuildRequires:	python-devel
 BuildRequires:	automoc4
 Provides:	PyKDE4 = %{EVRD}
 Provides:	pykde4 = %{EVRD}
@@ -75,4 +76,72 @@ Python bindings for KDE 4 documentation.
 # Copy Python Doc
 mkdir -p %{buildroot}%{_kde_datadir}/doc/python-kde4
 cp -a docs/html/* %{buildroot}%{_kde_datadir}/doc/python-kde4/
+
+%changelog
+* Wed Dec 05 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.9.4-1
+- New version 4.9.4
+
+* Wed Nov 07 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.9.3-1
+- New version 4.9.3
+
+* Thu Oct 04 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.9.2-1
+- New version 4.9.2
+
+* Sat Sep 08 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.9.1-1
+- New version 4.9.1
+
+* Sat Aug 04 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.9.0-1
+- New version 4.9.0
+
+* Thu Jul 12 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.8.97-1
+- Update to 4.8.97
+- Add pykde4-respect-sip-flags patch from Cooker
+
+* Thu Jun 28 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.8.95-1
+- Update to 4.8.95
+
+* Wed Jun 20 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.8.90-1
+- Update to 4.8.90
+- Update BuildRequires (as it now requires python-sip 4.13.1+)
+
+* Fri Jun 08 2012 Arkady L. Shane <arkady.shane@rosalab.ru> 1:4.8.4-1
+- update to 4.8.4
+
+* Thu May 10 2012 Arkady L. Shane <arkady.shane@rosalab.ru> 1:4.8.3-1
+- update to 4.8.3
+
+* Sun Mar 11 2012 Arkady L. Shane <arkady.shane@rosalab.ru> 1:4.8.2-1
+- update to 4.8.2
+
+* Sun Mar 11 2012 Arkady L. Shane <arkady.shane@rosalab.ru> 1:4.8.1-1
+- update to 4.8.1
+
+* Thu Jan 19 2012 Nicolas Lécureuil <nlecureuil@mandriva.com> 1:4.8.0-1
++ Revision: 762417
+- New upstream tarball
+
+* Fri Jan 06 2012 Nicolas Lécureuil <nlecureuil@mandriva.com> 1:4.7.97-1
++ Revision: 758118
+- New upstream tarball
+
+* Tue Jan 03 2012 Nicolas Lécureuil <nlecureuil@mandriva.com> 1:4.7.95-1
++ Revision: 748827
+- Fix file list
+- Fix file list
+- Fix file list
+- Fix file list
+- New version
+
+* Wed Dec 14 2011 Nicolas Lécureuil <nlecureuil@mandriva.com> 1:4.7.90-1
++ Revision: 740826
+- New version
+
+* Tue Nov 22 2011 Nicolas Lécureuil <nlecureuil@mandriva.com> 1:4.7.80-1
++ Revision: 732411
+- Add Automoc4 as buildrequires ( to workaround a rpm5/iurt bug)
+- New version 4.7.80
+
+* Wed Sep 07 2011 Nicolas Lécureuil <nlecureuil@mandriva.com> 1:4.7.41-1
++ Revision: 698633
+- imported package python-kde4
 
