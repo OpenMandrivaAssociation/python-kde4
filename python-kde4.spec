@@ -2,13 +2,19 @@
 
 Name:		python-kde4
 Summary:	KDE bindings to non-C++ languages
-Version:	4.9.4
+Version:	4.9.98
 Release:	1
 Epoch:		1
 Group:		Development/KDE and Qt
 License:	GPLv2
 URL:		http://www.kde.org
-Source:		ftp://ftp.kde.org/pub/kde/stable/%{version}/src/%{srcname}-%{version}.tar.xz
+%define is_beta %(if test `echo %version |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
+%if %is_beta
+%define ftpdir unstable
+%else
+%define ftpdir stable
+%endif
+Source:		ftp://ftp.kde.org/pub/kde/%ftpdir/%{version}/src/%{srcname}-%{version}.tar.xz
 Patch0:		pykde4-respect-sip-flags.patch
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	python-sip >= 1:4.13.1
@@ -25,7 +31,7 @@ The Python bindings for KDE 4.
 %files
 %{py_platsitedir}/PyQt4/
 %{py_platsitedir}/PyKDE4
-%{_kde_bindir}/pykdeuic4
+%{_kde_bindir}/pykdeuic4*
 %{_kde_libdir}/kde4/kpythonpluginfactory.so
 %dir %{_kde_appsdir}/pykde4
 %exclude %{_kde_datadir}/doc/python-kde4
