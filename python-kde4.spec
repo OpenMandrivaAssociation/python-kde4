@@ -2,20 +2,20 @@
 
 Name:		python-kde4
 Summary:	KDE bindings to non-C++ languages
-Version:	4.9.98
+Version:	4.10.0
 Release:	1
 Epoch:		1
 Group:		Development/KDE and Qt
 License:	GPLv2
 URL:		http://www.kde.org
 %define is_beta %(if test `echo %version |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
-%if %is_beta
+%if %{is_beta}
 %define ftpdir unstable
 %else
 %define ftpdir stable
 %endif
-Source:		ftp://ftp.kde.org/pub/kde/%ftpdir/%{version}/src/%{srcname}-%{version}.tar.xz
-Patch0:		pykde4-respect-sip-flags.patch
+Source:		ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/%{srcname}-%{version}.tar.xz
+Patch0:		pykde4-4.10.0-respect-sip-flags.patch
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	python-sip >= 1:4.13.1
 BuildRequires:	python-qt4-devel >= 4.9
@@ -84,6 +84,10 @@ mkdir -p %{buildroot}%{_kde_datadir}/doc/python-kde4
 cp -a docs/html/* %{buildroot}%{_kde_datadir}/doc/python-kde4/
 
 %changelog
+* Thu Feb 07 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.10.0-1
+- New version 4.10.0
+- Re-diff respect-sip-flags patch (bero)
+
 * Wed Dec 05 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.9.4-1
 - New version 4.9.4
 
