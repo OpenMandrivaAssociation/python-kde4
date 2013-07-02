@@ -2,7 +2,7 @@
 
 Summary:	KDE bindings to non-C++ languages
 Name:		python-kde4
-Version:	4.10.4
+Version:	4.10.5
 Release:	1
 Epoch:		1
 Group:		Development/KDE and Qt
@@ -84,6 +84,9 @@ mkdir -p %{buildroot}%{_kde_datadir}/doc/python-kde4
 cp -a docs/html/* %{buildroot}%{_kde_datadir}/doc/python-kde4/
 
 %changelog
+* Wed Jul 03 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.10.5-1
+- New version 4.10.5
+
 * Wed Jun 05 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.10.4-1
 - New version 4.10.4
 
