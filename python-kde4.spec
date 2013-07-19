@@ -2,9 +2,9 @@
 
 Summary:	KDE bindings to non-C++ languages
 Name:		python-kde4
-Version:	4.10.5
-Release:	1
 Epoch:		1
+Version:	4.10.5
+Release:	2
 Group:		Development/KDE and Qt
 License:	GPLv2
 Url:		http://www.kde.org
@@ -17,9 +17,11 @@ Url:		http://www.kde.org
 Source:		ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/%{srcname}-%{version}.tar.xz
 Patch0:		pykde4-4.10.0-respect-sip-flags.patch
 BuildRequires:	kdepimlibs4-devel
-BuildRequires:	python-sip >= 1:4.14.0
-BuildRequires:	python-qt4-devel >= 4.9
 BuildRequires:	python-devel
+BuildRequires:	python-qt4-devel >= 4.9
+BuildRequires:	python-sip >= 1:4.14.0
+BuildRequires:	pkgconfig(polkit-qt-1)
+BuildRequires:	pkgconfig(shared-desktop-ontologies)
 BuildRequires:	automoc4
 Provides:	PyKDE4 = %{EVRD}
 Provides:	pykde4 = %{EVRD}
@@ -84,6 +86,9 @@ mkdir -p %{buildroot}%{_kde_datadir}/doc/python-kde4
 cp -a docs/html/* %{buildroot}%{_kde_datadir}/doc/python-kde4/
 
 %changelog
+* Fri Jul 19 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.10.5-2
+- Update BuildRequires
+
 * Wed Jul 03 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.10.5-1
 - New version 4.10.5
 
