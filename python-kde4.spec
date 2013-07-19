@@ -20,7 +20,8 @@ BuildRequires:	kdepimlibs4-devel
 BuildRequires:	python-devel
 BuildRequires:	python-qt4-devel >= 4.9
 BuildRequires:	python-sip >= 1:4.14.0
-BuildRequires:	pkgconfig(polkit-qt-1)
+# Seems to be broken for a long time
+# BuildRequires:	pkgconfig(polkit-qt-1)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
 BuildRequires:	automoc4
 Provides:	PyKDE4 = %{EVRD}
