@@ -3,7 +3,7 @@
 Summary:	KDE bindings to non-C++ languages
 Name:		python-kde4
 Version:	4.11.2
-Release:	2
+Release:	3
 Epoch:		1
 Group:		Development/KDE and Qt
 License:	GPLv2
@@ -77,7 +77,11 @@ Python bindings for KDE 4 documentation.
 %prep
 %setup -q -n %{srcname}-%{version}
 %patch0 -p1
+SIPVER=$((`sip -V |cut -d. -f1` * 1000 + `sip -V |cut -d. -f2`))
+if [ $SIPVER -lt 4015 ]; then
+# This patch breaks sip 4.15, but restores working with versions before 4.15
 %patch1 -p1
+fi
 
 %build
 %cmake_kde4
