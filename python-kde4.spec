@@ -2,11 +2,11 @@
 
 Summary:	KDE bindings to non-C++ languages
 Name:		python-kde4
-Version:	4.11.2
-Release:	3
+Version:	4.11.3
+Release:	1
 Epoch:		1
+License:	GPLv2+
 Group:		Development/KDE and Qt
-License:	GPLv2
 Url:		http://www.kde.org
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
@@ -47,7 +47,6 @@ The Python bindings for KDE 4.
 %package devel
 Summary:	PyKDE4 sip files and examples
 Group:		Development/KDE and Qt
-Conflicts:	python-kde4 < 1:4.5.77-0.svn1198704.2
 Requires:	python-kde4 = %{EVRD}
 Requires:	python-qt4-devel
 
@@ -95,6 +94,9 @@ mkdir -p %{buildroot}%{_kde_datadir}/doc/python-kde4
 cp -a docs/html/* %{buildroot}%{_kde_datadir}/doc/python-kde4/
 
 %changelog
+* Wed Nov 06 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.11.3-1
+- New version 4.11.3
+
 * Wed Oct 09 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.11.2-2
 - Add sip4.15 patch to revert some sip-4.15 fixes that break older sip support
 
