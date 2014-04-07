@@ -19,6 +19,7 @@ Patch0:		pykde4-4.10.0-respect-sip-flags.patch
 # Revert commit that adds some python-sip-4.15 fixes and breaks older sip support
 # https://bugs.kde.org/show_bug.cgi?id=325667
 Patch1:		pykde4-4.11.2-sip4.15.patch
+Patch2:		pykde4-4.12.4-fix-build-against-python-sip-4.15.5.patch
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	python-devel
 BuildRequires:	python-qt4-devel >= 4.9
@@ -81,6 +82,7 @@ if [ $SIPVER -lt 4015 ]; then
 # This patch breaks sip 4.15, but restores working with versions before 4.15
 %patch1 -p1
 fi
+%patch2 -p1
 
 %build
 %cmake_kde4
