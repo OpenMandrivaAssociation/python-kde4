@@ -3,7 +3,7 @@
 Summary:	KDE bindings to non-C++ languages
 Name:		python-kde4
 Version:	4.12.4
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPLv2+
 Group:		Development/KDE and Qt
@@ -24,8 +24,8 @@ Patch1:		pykde4-4.11.2-sip4.15.patch
 Patch2:		pykde4-4.12.4-fix-build-against-python-sip-4.15.5.patch
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	python-devel
-BuildRequires:	python-qt4-devel >= 4.9
-BuildRequires:	python-sip >= 1:4.14.0
+BuildRequires:	python-qt4-devel
+BuildRequires:	python-sip
 # Seems to be broken for a long time
 # BuildRequires:	pkgconfig(polkit-qt-1)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
@@ -79,13 +79,8 @@ Python bindings for KDE 4 documentation.
 %prep
 %setup -q -n %{srcname}-%{version}
 %patch0 -p1
-SIPVER=$((`sip -V |cut -d. -f1` * 1000 + `sip -V |cut -d. -f2`))
-if [ $SIPVER -lt 4015 ]; then
-# This patch breaks sip 4.15, but restores working with versions before 4.15
 %patch1 -p1
-else
 %patch2 -p1
-fi
 
 %build
 %cmake_kde4
@@ -99,6 +94,9 @@ mkdir -p %{buildroot}%{_kde_datadir}/doc/python-kde4
 cp -a docs/html/* %{buildroot}%{_kde_datadir}/doc/python-kde4/
 
 %changelog
+* Fri Apr 11 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.12.4-3
+- Apply all patches even with python-sip 4.15, all issues are resolved now
+
 * Tue Apr 08 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.12.4-2
 - Add patch to fix build with latest python-sip and python-qt4
 
