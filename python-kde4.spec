@@ -22,7 +22,6 @@ Patch1:		pykde4-4.13.2-sip4.15.patch
 # Patch adapted from similar changes made to phonon sip files included in PyQt-4.10.4
 # https://bugs.kde.org/show_bug.cgi?id=332223#c3
 Patch2:		pykde4-4.12.4-fix-build-against-python-sip-4.15.5.patch
-Patch3:		python-kde4-4.13.2-pyqt4.11.patch
 BuildRequires:	automoc4
 BuildRequires:	python-sip
 BuildRequires:	kdepimlibs4-devel
@@ -81,9 +80,8 @@ Python bindings for KDE 4 documentation.
 %prep
 %setup -q -n %{srcname}-%{version}
 %patch0 -p1
-%patch2 -p1
-%patch3 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %cmake_kde4
@@ -99,6 +97,7 @@ cp -a docs/html/* %{buildroot}%{_kde_datadir}/doc/python-kde4/
 %changelog
 * Tue Jul 15 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.13.3-1
 - New version 4.13.3
+- Drop pyqt4.11 upstream patch
 
 * Wed Jul 02 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.13.2-3
 - Add patches to fix build with python-sip 4.16 and python-qt4 4.11
