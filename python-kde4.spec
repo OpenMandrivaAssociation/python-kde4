@@ -2,7 +2,7 @@
 
 Summary:	KDE bindings to non-C++ languages
 Name:		python-kde4
-Version:	4.12.4
+Version:	4.13.3
 Release:	1
 Epoch:		1
 License:	GPLv2+
@@ -18,19 +18,22 @@ Source:		ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/%{srcname}-%{version
 Patch0:		pykde4-4.10.0-respect-sip-flags.patch
 # Revert commit that adds some python-sip-4.15 fixes and breaks older sip support
 # https://bugs.kde.org/show_bug.cgi?id=325667
-Patch1:		pykde4-4.11.2-sip4.15.patch
+Patch1:		pykde4-4.13.2-sip4.15.patch
+# Patch adapted from similar changes made to phonon sip files included in PyQt-4.10.4
+# https://bugs.kde.org/show_bug.cgi?id=332223#c3
 Patch2:		pykde4-4.12.4-fix-build-against-python-sip-4.15.5.patch
+BuildRequires:	automoc4
+BuildRequires:	python-sip
 BuildRequires:	kdepimlibs4-devel
-BuildRequires:	python-devel
-BuildRequires:	python-qt4-devel >= 4.9
-BuildRequires:	python-sip >= 1:4.14.0
+BuildRequires:	python-qt4-devel
+BuildRequires:	pkgconfig(python)
 # Seems to be broken for a long time
 # BuildRequires:	pkgconfig(polkit-qt-1)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
-BuildRequires:	automoc4
 Provides:	PyKDE4 = %{EVRD}
 Provides:	pykde4 = %{EVRD}
 Requires:	python-qt4 >= 4.9
+Requires:	sip-api(%{sip_api_major}) = %{sip_api}
 
 %description
 The Python bindings for KDE 4.
@@ -77,11 +80,7 @@ Python bindings for KDE 4 documentation.
 %prep
 %setup -q -n %{srcname}-%{version}
 %patch0 -p1
-SIPVER=$((`sip -V |cut -d. -f1` * 1000 + `sip -V |cut -d. -f2`))
-if [ $SIPVER -lt 4015 ]; then
-# This patch breaks sip 4.15, but restores working with versions before 4.15
 %patch1 -p1
-fi
 %patch2 -p1
 
 %build
@@ -96,6 +95,23 @@ mkdir -p %{buildroot}%{_kde_datadir}/doc/python-kde4
 cp -a docs/html/* %{buildroot}%{_kde_datadir}/doc/python-kde4/
 
 %changelog
+* Tue Jul 15 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.13.3-1
+- New version 4.13.3
+- Drop pyqt4.11 upstream patch
+
+* Wed Jul 02 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.13.2-3
+- Add patches to fix build with python-sip 4.16 and python-qt4 4.11
+- Adjust Requires for new sip policy
+
+* Wed Jun 11 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.13.2-1
+- New version 4.13.2
+
+* Fri Apr 11 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.12.4-3
+- Apply all patches even with python-sip 4.15, all issues are resolved now
+
+* Tue Apr 08 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.12.4-2
+- Add patch to fix build with latest python-sip and python-qt4
+
 * Wed Apr 02 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.12.4-1
 - New version 4.12.4
 
