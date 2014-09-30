@@ -15,7 +15,7 @@ Url:		http://www.kde.org
 %define ftpdir stable
 %endif
 Source:		ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/%{srcname}-%{version}.tar.xz
-Patch0:		pykde4-4.10.0-respect-sip-flags.patch
+Patch0:		pykde4-4.14.1-respect-sip-flags.patch
 # Revert commit that adds some python-sip-4.15 fixes and breaks older sip support
 # https://bugs.kde.org/show_bug.cgi?id=325667
 Patch1:		pykde4-4.13.2-sip4.15.patch
@@ -97,6 +97,7 @@ cp -a docs/html/* %{buildroot}%{_kde_datadir}/doc/python-kde4/
 %changelog
 * Mon Sep 29 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.14.1-1
 - New version 4.14.1
+- Re-diff respect-sip-flags patch
 
 * Tue Jul 15 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.13.3-1
 - New version 4.13.3
