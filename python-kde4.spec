@@ -19,9 +19,6 @@ Patch0:		pykde4-4.14.1-respect-sip-flags.patch
 # Revert commit that adds some python-sip-4.15 fixes and breaks older sip support
 # https://bugs.kde.org/show_bug.cgi?id=325667
 Patch1:		pykde4-4.14.1-sip4.15.patch
-# Patch adapted from similar changes made to phonon sip files included in PyQt-4.10.4
-# https://bugs.kde.org/show_bug.cgi?id=332223#c3
-Patch2:		pykde4-4.12.4-fix-build-against-python-sip-4.15.5.patch
 BuildRequires:	automoc4
 BuildRequires:	python-sip
 BuildRequires:	kdepimlibs4-devel
@@ -81,7 +78,6 @@ Python bindings for KDE 4 documentation.
 %setup -q -n %{srcname}-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %cmake_kde4
@@ -99,6 +95,7 @@ cp -a docs/html/* %{buildroot}%{_kde_datadir}/doc/python-kde4/
 - New version 4.14.1
 - Re-diff respect-sip-flags patch
 - Re-diff sip4.15 patch
+- Drop fix-build-against-python-sip-4.15.5 patch (fixed upstream)
 
 * Tue Jul 15 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.13.3-1
 - New version 4.13.3
