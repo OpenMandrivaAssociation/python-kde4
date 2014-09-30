@@ -1,7 +1,7 @@
-diff -urN pykde4-4.13.2/CMakeLists.txt pykde4-4.13.2-patched/CMakeLists.txt
---- pykde4-4.13.2/CMakeLists.txt	2014-07-01 02:29:42.689104233 +1100
-+++ pykde4-4.13.2-patched/CMakeLists.txt	2014-07-01 02:33:58.496420654 +1100
-@@ -119,10 +119,10 @@
+diff -urN pykde4-4.14.1/CMakeLists.txt pykde4-4.14.1-patched/CMakeLists.txt
+--- pykde4-4.14.1/CMakeLists.txt	2014-08-15 07:17:11.000000000 +1100
++++ pykde4-4.14.1-patched/CMakeLists.txt	2014-09-30 20:41:50.824542928 +1100
+@@ -116,10 +116,10 @@
  	    # Disable for features in newer Qt
          if (PYQT4_VERSION STRGREATER "040a04")
              # GLuint + QVector (PyQt > 4.11)
@@ -14,7 +14,7 @@ diff -urN pykde4-4.13.2/CMakeLists.txt pykde4-4.13.2-patched/CMakeLists.txt
          endif ()
      else ()
  	    set(SIP_EXTRA_OPTIONS -g)
-@@ -132,17 +132,17 @@
+@@ -129,17 +129,17 @@
  	# Disable for newer PyQt
          if (PYQT4_VERSION STRGREATER "040a04")
              # GLuint + QVector (PyQt > 4.11)
@@ -33,5 +33,5 @@ diff -urN pykde4-4.13.2/CMakeLists.txt pykde4-4.13.2-patched/CMakeLists.txt
 -add_definitions(-D_REENTRANT -DQT_CORE_LIB -DQT_GUI_LIB -DUSING_SOPRANO_NRLMODEL_UNSTABLE_API -DSIP_PROTECTED_IS_PUBLIC -Dprotected=public)
 +add_definitions(-D_REENTRANT -DQT_CORE_LIB -DQT_GUI_LIB -DUSING_SOPRANO_NRLMODEL_UNSTABLE_API)
  
- file(GLOB kdecore_files_sip sip/kdecore/*.sip)
- set(SIP_EXTRA_FILES_DEPEND ${kdecore_files_sip})
+ include(PyKDEConfigurationInformation.cmake)
+ 
