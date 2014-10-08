@@ -39,7 +39,6 @@ The Python bindings for KDE 4.
 %{py_platsitedir}/PyQt4/
 %{py_platsitedir}/PyKDE4
 %{_kde_bindir}/pykdeuic4*
-%{_kde_libdir}/kde4/kpythonpluginfactory.so
 %dir %{_kde_appsdir}/pykde4
 %exclude %{_kde_datadir}/doc/python-kde4
 
