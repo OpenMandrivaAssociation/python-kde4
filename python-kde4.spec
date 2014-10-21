@@ -81,7 +81,7 @@ Python bindings for KDE 4 documentation.
 
 %build
 %cmake_kde4 \
-    -DPYTHON_EXECUTABLE=%{_python2}
+    -DPYTHON_EXECUTABLE="/usr/bin/python2"
 
 %make
 
