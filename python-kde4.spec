@@ -20,10 +20,10 @@ Patch0:		pykde4-4.14.1-respect-sip-flags.patch
 # https://bugs.kde.org/show_bug.cgi?id=325667
 Patch1:		pykde4-4.14.1-sip4.15.patch
 BuildRequires:	automoc4
-BuildRequires:	python2-sip
+BuildRequires:	python3-sip
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	python-qt4-devel
-BuildRequires:	pkgconfig(python2)
+BuildRequires:	pkgconfig(python3)
 # Seems to be broken for a long time
 # BuildRequires:	pkgconfig(polkit-qt-1)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
@@ -39,7 +39,7 @@ The Python bindings for KDE 4.
 %{py_platsitedir}/PyQt4/
 %{py_platsitedir}/PyKDE4
 %{_kde_bindir}/pykdeuic4*
-%{_kde_libdir}/kde4/kpythonpluginfactory.so
+#%{_kde_libdir}/kde4/kpythonpluginfactory.so
 %dir %{_kde_appsdir}/pykde4
 %exclude %{_kde_datadir}/doc/python-kde4
 
@@ -80,8 +80,7 @@ Python bindings for KDE 4 documentation.
 %patch1 -p1
 
 %build
-%cmake_kde4 \
-    -DPYTHON_EXECUTABLE="/usr/bin/python2"
+%cmake_kde4
 
 %make
 
