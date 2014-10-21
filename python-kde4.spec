@@ -23,7 +23,7 @@ BuildRequires:	automoc4
 BuildRequires:	python-sip
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	python-qt4-devel
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 # Seems to be broken for a long time
 # BuildRequires:	pkgconfig(polkit-qt-1)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
@@ -80,7 +80,9 @@ Python bindings for KDE 4 documentation.
 %patch1 -p1
 
 %build
-%cmake_kde4
+%cmake_kde4 \
+    -DPYTHON_EXECUTABLE=%{_python2}
+
 %make
 
 %install
