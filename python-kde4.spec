@@ -20,7 +20,7 @@ Patch0:		pykde4-4.14.1-respect-sip-flags.patch
 # https://bugs.kde.org/show_bug.cgi?id=325667
 Patch1:		pykde4-4.14.1-sip4.15.patch
 BuildRequires:	automoc4
-BuildRequires:	python-sip
+BuildRequires:	python2-sip
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	python-qt4-devel
 BuildRequires:	pkgconfig(python2)
