@@ -3,7 +3,7 @@
 Summary:	KDE bindings to non-C++ languages
 Name:		python-kde4
 Version:	4.14.3
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPLv2+
 Group:		Development/KDE and Qt
@@ -14,11 +14,16 @@ Url:		http://www.kde.org
 %else
 %define ftpdir stable
 %endif
-Source:		ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/%{srcname}-%{version}.tar.xz
+Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/%{srcname}-%{version}.tar.xz
 Patch0:		pykde4-4.14.1-respect-sip-flags.patch
 # Revert commit that adds some python-sip-4.15 fixes and breaks older sip support
 # https://bugs.kde.org/show_bug.cgi?id=325667
 Patch1:		pykde4-4.14.1-sip4.15.patch
+Patch2:		fix_kpythonpluginfactory_build.diff
+# rebased pythonpluginfactory_python3.diff
+Patch3:		pykde4-4.11.2-pythonpluginfactory_python3.patch
+Patch4:		kubuntu_kpythonpluginfactory_3.2support.diff
+
 BuildRequires:	automoc4
 BuildRequires:	python-sip
 BuildRequires:	kdepimlibs4-devel
@@ -76,8 +81,7 @@ Python bindings for KDE 4 documentation.
 
 %prep
 %setup -q -n %{srcname}-%{version}
-%patch0 -p1
-%patch1 -p1
+%apply_patches
 
 %build
 %cmake_kde4 -DPython_ADDITIONAL_VERSIONS=%{_bindir}/python2
