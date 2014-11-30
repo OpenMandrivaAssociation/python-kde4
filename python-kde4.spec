@@ -3,7 +3,7 @@
 Summary:	KDE bindings to non-C++ languages
 Name:		python-kde4
 Version:	4.14.3
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPLv2+
 Group:		Development/KDE and Qt
@@ -28,7 +28,7 @@ BuildRequires:	automoc4
 BuildRequires:	python-sip
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	python-qt4-devel
-BuildRequires:	pkgconfig(python)
+#BuildRequires:	pkgconfig(python)
 # Seems to be broken for a long time
 # BuildRequires:	pkgconfig(polkit-qt-1)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
