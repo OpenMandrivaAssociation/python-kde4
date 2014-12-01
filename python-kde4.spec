@@ -28,6 +28,7 @@ BuildRequires:	automoc4
 BuildRequires:	python-sip
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	python-qt4-devel
+BuildRequires:	pkgconfig(python3)
 #BuildRequires:	pkgconfig(python)
 # Seems to be broken for a long time
 # BuildRequires:	pkgconfig(polkit-qt-1)
