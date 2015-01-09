@@ -3,7 +3,7 @@
 Summary:	KDE bindings to non-C++ languages
 Name:		python-kde4
 Version:	4.14.3
-Release:	6
+Release:	7
 Epoch:		1
 License:	GPLv2+
 Group:		Development/KDE and Qt
@@ -29,7 +29,9 @@ BuildRequires:	python-sip
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	python-qt4-devel
 BuildRequires:	pkgconfig(python3)
-#BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python)
+BuildRequires:	python2-qt4-devel
+BuildRequires:	python2-sip
 # Seems to be broken for a long time
 # BuildRequires:	pkgconfig(polkit-qt-1)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
@@ -44,10 +46,24 @@ The Python bindings for KDE 4.
 %files
 %{py_platsitedir}/PyQt4/
 %{py_platsitedir}/PyKDE4
-%{_kde_bindir}/pykdeuic4*
+%{_kde_bindir}/pykdeuic4-%{py3_ver}
+%{_kde_bindir}/pykdeuic4
 %{_kde_libdir}/kde4/kpythonpluginfactory.so
 %dir %{_kde_appsdir}/pykde4
 %exclude %{_kde_datadir}/doc/python-kde4
+
+%package -n python2-kde4
+Summary:        KDE bindings to python2
+Requires:       python2-qt4 >= 4.9
+Requires:       sip-api(%{sip_api_major}) = %{sip_api}
+
+%description
+The Python 2 bindings for KDE 4.
+
+%files
+%{py2_platsitedir}/PyQt4/
+%{py2_platsitedir}/PyKDE4
+%{_kde_bindir}/pykdeuic4-%{py_ver}
 
 #-----------------------------------------------------------------------------
 
@@ -81,19 +97,38 @@ Python bindings for KDE 4 documentation.
 #------------------------------------------------------------
 
 %prep
-%setup -q -n %{srcname}-%{version}
+%setup -q -c
+pushd %{srcname}-%{version}
 %apply_patches
+popd
+mv %{srcname}-%{version} python2
+cp -Rp python2 python3
 
 %build
-%cmake_kde4 -DPython_ADDITIONAL_VERSIONS=%{_bindir}/python2
+pushd python2
+%cmake_kde4 -DPYTHON_EXECUTABLE:PATH=%{__python2} \
+	    -DPYKDEUIC4_ALTINSTALL:BOOL=ON
 %make
+popd
+
+pushd python3
+%cmake_kde4 -DPYTHON_EXECUTABLE:PATH=%{__python3}
+%make
+popd
 
 %install
+pushd python2
 %makeinstall_std -C build
+# omit conflict with base kpythonpluginfactory
+rm -fv %{buildroot}%{_kde4_libdir}/kde4/kpythonpluginfactory.so 
+popd
 
+pushd python3
+%makeinstall_std -C build
 # Copy Python Doc
 mkdir -p %{buildroot}%{_kde_datadir}/doc/python-kde4
 cp -a docs/html/* %{buildroot}%{_kde_datadir}/doc/python-kde4/
+popd
 
 %changelog
 * Tue Nov 11 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 1:4.14.3-1
