@@ -3,7 +3,7 @@
 Summary:	KDE bindings to non-C++ languages
 Name:		python-kde4
 Version:	4.14.3
-Release:	7
+Release:	8
 Epoch:		1
 License:	GPLv2+
 Group:		Development/KDE and Qt
@@ -30,8 +30,15 @@ BuildRequires:	kdepimlibs4-devel
 BuildRequires:	python-qt4-devel
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(python)
-BuildRequires:	python2-qt4-devel
 BuildRequires:	python2-sip
+BuildRequires:	python2-qt4-declarative
+BuildRequires:	python2-qt4-network
+BuildRequires:	python2-qt4-svg
+BuildRequires:	python2-qt4-xml
+BuildRequires:	python2-qt4-gui
+BuildRequires:	python2-qt4-core
+BuildRequires:	python2-qt4-webkit
+BuildRequires:	python2-qt4-script
 # Seems to be broken for a long time
 # BuildRequires:	pkgconfig(polkit-qt-1)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
@@ -54,16 +61,23 @@ The Python bindings for KDE 4.
 
 %package -n python2-kde4
 Summary:        KDE bindings to python2
-Requires:       python2-qt4 >= 4.9
+Requires:  python2-qt4-declarative
+Requires:  python2-qt4-network
+Requires:  python2-qt4-svg
+Requires:  python2-qt4-xml
+Requires:  python2-qt4-gui
+Requires:  python2-qt4-core
+Requires:  python2-qt4-webkit
+Requires:  python2-qt4-script
 Requires:       sip-api(%{sip_api_major}) = %{sip_api}
 
 %description
 The Python 2 bindings for KDE 4.
 
-%files
+%files -n python2-kde4
 %{py2_platsitedir}/PyQt4/
 %{py2_platsitedir}/PyKDE4
-%{_kde_bindir}/pykdeuic4-%{py_ver}
+%{_kde_bindir}/pykdeuic4-%{py2_ver}
 
 #-----------------------------------------------------------------------------
 
@@ -91,7 +105,7 @@ BuildArch:	noarch
 Python bindings for KDE 4 documentation.
 
 %files doc
-%doc AUTHORS COPYING COPYING.LESSER NEWS README THANKS
+%doc python3/AUTHORS python3/COPYING python3/COPYING.LESSER python3/NEWS python3/README python3/THANKS
 %{_kde_datadir}/doc/python-kde4
 
 #------------------------------------------------------------
