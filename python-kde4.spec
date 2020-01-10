@@ -113,7 +113,7 @@ Python bindings for KDE 4 documentation.
 %prep
 %setup -q -c
 pushd %{srcname}-%{version}
-%apply_patches
+%autopatch -p1
 popd
 mv %{srcname}-%{version} python2
 cp -Rp python2 python3
