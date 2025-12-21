@@ -24,6 +24,7 @@ Patch2:		fix_kpythonpluginfactory_build.diff
 Patch3:		pykde4-4.11.2-pythonpluginfactory_python3.patch
 Patch4:		kubuntu_kpythonpluginfactory_3.2support.diff
 
+BuildRequires:	make
 BuildRequires:	automoc4
 BuildRequires:	python-sip
 BuildRequires:	kdepimlibs4-devel
